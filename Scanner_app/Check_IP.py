@@ -10,3 +10,4 @@ def v6_or_v4(IP):
             return 2
         except OSError:
             print("Unvalid IP")
+

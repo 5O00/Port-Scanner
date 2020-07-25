@@ -1,11 +1,10 @@
 import socket, sys, time
 from ServPort import ServerOnPort
 
-Ip = 0
-ip = 0
+Ip = ""
+ip = ""
 
 def ipv4():
-    global Ip
     print('Scanning of the Ip : {}'.format(Ip))
     try:
         t0 = time.process_time()        
@@ -26,7 +25,6 @@ def ipv4():
 
 
 def ipv6():
-    global Ip
     print('Scanning of the Ip ...')
     try:
         for port in range(1, 65535):

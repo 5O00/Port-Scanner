@@ -1,8 +1,8 @@
 import socket, sys
 from ServPort import ServerOnPort
 
-Ip = 0
-ip = 0
+Ip = ""
+ip = ""
 
 def Fast_scan():
     print('Scanning of the IP : {}'.format(ip))
