@@ -1,6 +1,6 @@
 from utils.arguments import parse_args
 from utils.utils import ipv4, ipv6, get_ip
-from worker.scan import start_scan
+from scan import start_scan
 import socket
 
 args = parse_args()
