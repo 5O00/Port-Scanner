@@ -1,22 +1,24 @@
-import socket, sys, time, threading, optparse
-from Check_IP import v6_or_v4
-from Type_Scan import Fast_scan
-from ServPort import ServerOnPort
-from Type_IP import ipv4, ipv6
+from utils.arguments import parse_args
+from utils.utils import ipv4, ipv6, get_ip
+from worker.scan import start_scan
+import socket
 
+args = parse_args()
 
+def main(args):
+    ip = args.host
+    if (ipv4(ip)):
+        ipv = socket.AF_INET
+    
+    elif(ipv6(ip)):
+        ipv = socket.AF_INET6
+    
+    else:
+        ipv = get_ip(ip)
+    
+    start_scan(ip, args.ports, args.maxt)
 
-parser = optparse.OptionParser()
-parser.add_option('-i', '--ip', action="store", dest="Ip", help="Ip adress to scan")
-options, args = parser.parse_args()
-Ip = options.Ip
+if __name__ == "__main__":
+    args = parse_args()
+    main(args)
 
-type_ip=v6_or_v4(Ip)
-if type_ip == 1:
-    #On affiche le type juste pour voir si ça marche
-    print("IPV4")
-    ipv4()
-elif type_ip == 2:
-    #Pareil ici
-    print("IPV6")
-    ipv6()
